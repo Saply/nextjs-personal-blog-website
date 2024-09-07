@@ -18,18 +18,18 @@ const Header = () => {
           Projects
         </Link>
         <button>
-            <SunIcon />
+          <SunIcon />
         </button>
       </nav>
 
       <div>
-        <a href="https://" className="inline-block w-6 h-6 mr-4">
-          <LinkedInIcon className="hover:scale-125 transition-all ease duration-200" />
+        <a href="https://example.com" className="inline-block w-6 h-6 mr-4">
+          <LinkedInIcon className="hover:scale-125 transition-all ease-linear duration-200" />
         </a>
-        <a href="https://" className="inline-block w-6 h-6 mr-4">
+        <a href="https://example.com" className="inline-block w-6 h-6 mr-4">
           <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
-        <a href="https://" className="inline-block w-6 h-6 mr-4">
+        <a href="https://example.com" className="inline-block w-6 h-6 mr-4">
           <GithubIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
       </div>

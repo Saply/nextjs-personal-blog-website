@@ -8,10 +8,10 @@ const inter = Inter({
   display: "swap",
   variable: "--font-in",
 });
-const manrope = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-in",
+  variable: "--font-mr",
 });
 // Layout in every route
 export const metadata = {
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         className={cx(
           inter.variable,
           manrope.variable,
-          "font-mr bg-light dark: bg-dark"
+          "font-mr bg-light"
         )}
       >
         <Header />
