@@ -4,13 +4,11 @@ import React from "react";
 import Tag from "../Elements/Tag";
 import { format } from "date-fns";
 
-const BlogLayoutTwo = ({ blog }) => {
+const BlogLayoutThree = ({ blog }) => {
+  // group hover for entire thing
   return (
-    <div className="group grid grid-cols-12 gap-4 items-center text-dark">
-      <Link
-        href={blog.url}
-        className="col-span-4 h-full rounded-xl overflow-hidden"
-      >
+    <div className="group flex flex-col items-center text-dark">
+      <Link href={blog.url} className="h-full rounded-xl overflow-hidden">
         <Image
           src={blog.coverImage.filePath.replace("../public", "")}
           placeholder="blur"
@@ -18,11 +16,11 @@ const BlogLayoutTwo = ({ blog }) => {
           alt={blog.title}
           height={blog.coverImage.height}
           width={blog.coverImage.width}
-          className="aspect-square w-full h-full object-cover object-center group-hover:scale-105 transition-all ease duration-300"
+          className="aspect-[4/3] w-full h-full object-cover object-center group-hover:scale-105 transition-all ease duration-300"
         />
       </Link>
 
-      <div className="col-span-8 w-full">
+      <div className="flex flex-col w-full mt-4">
         <span className="uppercase text-accent font-semibold text-sm">
           {blog.tags[0]}
         </span>
@@ -41,4 +39,4 @@ const BlogLayoutTwo = ({ blog }) => {
   );
 };
 
-export default BlogLayoutTwo;
+export default BlogLayoutThree;
