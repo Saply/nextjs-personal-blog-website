@@ -1,4 +1,4 @@
-import { makeSource, defineDocumentType } from "@contentlayer/source-files";
+import { makeSource, defineDocumentType } from "contentlayer2/source-files";
 
 // https://contentlayer.dev/docs/reference/source-files/define-document-type-eb9db60e
 const Blog = defineDocumentType(() => ({
