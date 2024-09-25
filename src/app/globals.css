@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1>a>.icon.icon-link:before,
+h2>a>.icon.icon-link:before,
+h3>a>.icon.icon-link:before {
+    content: "#";
+    font-size: 0.8rem;
+}
+
+h2>a, h3>a {
+    text-decoration: none !important;
+}
