@@ -6,12 +6,36 @@ html {
     scroll-behavior: smooth;
 }
 
-h1>a>.icon.icon-link:before,
-h2>a>.icon.icon-link:before,
-h3>a>.icon.icon-link:before {
-    content: "#";
-    font-size: 0.8rem;
+/* h1>a>.icon.icon-link::before,
+h2>a>.icon.icon-link::before,
+h3>a>.icon.icon-link::before {
+    font-size: 0.5rem;
+} */
+
+/* h2>a>span>.content-header-link::before {
+    size: 1rem !important;
+    width: 100%;
+} */
+
+.content-header-link {
+    opacity: 0;
+    margin-left: -24px;
+    padding-right: 4px;
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+.content-header:hover .content-header-link,
+.content-header-link:hover {
+    opacity: 1;
 }
+
+.link-icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 
 h2>a, h3>a {
     text-decoration: none !important;
