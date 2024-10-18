@@ -2,6 +2,7 @@ import { makeSource, defineDocumentType } from "contentlayer2/source-files";
 import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
 import readingTime from "reading-time";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
@@ -67,6 +68,10 @@ const Blog = defineDocumentType(() => ({
   },
 }));
 
+const options = {
+  theme: "github-dark"
+}
+
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [Blog],
@@ -82,8 +87,9 @@ export default makeSource({
             className: ["content-header"],
           },
           content: svgData,
-        },
+        }
       ],
+      [rehypePrettyCode, options],
     ],
   },
 });
