@@ -98,9 +98,9 @@ code[data-line-numbers] {
   border: 2px solid;
   border-radius: 20%;
   cursor: pointer;
-  background-color: #6c747e;
+  background-color: #2d3748;
   color: rgb(198, 198, 216);
-  padding: 0.1rem;
+  padding: 0.25rem;
 }
 
 

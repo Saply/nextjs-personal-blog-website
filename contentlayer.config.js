@@ -5,6 +5,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
+import GithubSlugger from "github-slugger";
 
 const svgData = fromHtmlIsomorphic(
   `
@@ -65,12 +66,35 @@ const Blog = defineDocumentType(() => ({
       type: "json",
       resolve: (doc) => readingTime(doc.body.raw),
     },
+    toc: {
+      type: "json",
+      resolve: async (doc) => {
+        const regex = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+        const slugger = new GithubSlugger();
+        const headings = Array.from(doc.body.raw.matchAll(regex)).map(
+          ({ groups }) => {
+            // if flag and content exist
+            const flag = groups?.flag;
+            const content = groups?.content;
+
+            return {
+              level:
+                flag?.length == 1 ? "one" : flag?.length == 2 ? "two" : "three",
+              text: content,
+              slug: content ? slugger.slug(content) : undefined,
+            };
+          }
+        );
+
+        return headings;
+      },
+    },
   },
 }));
 
 const options = {
-    theme: "material-theme-ocean"
-}
+  theme: "material-theme-ocean",
+};
 
 export default makeSource({
   contentDirPath: "content",
@@ -87,7 +111,7 @@ export default makeSource({
             className: ["content-header"],
           },
           content: svgData,
-        }
+        },
       ],
       [rehypePrettyCode, options],
     ],
