@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@dotlottie/react-player": "^1.2.1",
+    "@rehype-pretty/transformers": "^0.13.2",
     "@supabase/auth-helpers-nextjs": "^0.7.4",
     "@tailwindcss/forms": "^0.5.5",
     "@tailwindcss/typography": "^0.5.9",
@@ -24,6 +25,7 @@
     "next": "^14.2.13",
     "next-contentlayer2": "^0.5.1",
     "next-sitemap": "^4.2.2",
+    "pliny": "^0.3.2",
     "postcss": "8.4.31",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

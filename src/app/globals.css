@@ -88,6 +88,22 @@ code[data-line-numbers] {
     position: relative;
 }
 
+[data-rehype-pretty-code-fragment] div button {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  margin: 5px 5px 5px 5px;
+  border: 2px solid;
+  border-radius: 20%;
+  cursor: pointer;
+  background-color: #6c747e;
+  color: rgb(198, 198, 216);
+  padding: 0.1rem;
+}
+
+
 [data-rehype-pretty-code-title] {
     position: absolute;
     right: 0;

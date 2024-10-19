@@ -69,7 +69,7 @@ const Blog = defineDocumentType(() => ({
 }));
 
 const options = {
-  theme: "github-dark"
+    theme: "material-theme-ocean"
 }
 
 export default makeSource({
