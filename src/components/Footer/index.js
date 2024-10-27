@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { GithubIcon, LinkedInIcon, TwitterIcon } from "../Icons";
 import Link from "next/link";
+import siteMetadata from "@/project files/siteMetaData";
 
 const Footer = () => {
   const {
@@ -34,7 +35,7 @@ const Footer = () => {
         <input type="submit" className="bg-dark text-light cursor-pointer font-medium rounded px-5 py-1"/>
       </form>
       <div className="flex items-center mt-8">
-        <a href="https://example.com" className="inline-block w-6 h-6 mr-4">
+        <a href={siteMetadata.linkedin} className="inline-block w-6 h-6 mr-4">
           <LinkedInIcon className="hover:scale-125 transition-all ease-linear duration-200" />
         </a>
         <a href="https://example.com" className="inline-block w-6 h-6 mr-4">

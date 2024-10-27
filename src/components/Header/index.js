@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GithubIcon, LinkedInIcon, SunIcon, TwitterIcon } from "../Icons";
 import Logo from "./Logo";
+import siteMetadata from "@/project files/siteMetaData";
 
 // Add to layout.js to use same header across all routes/pages
 const Header = () => {
@@ -11,19 +12,22 @@ const Header = () => {
         <Link href="/" className="mr-2">
           Home
         </Link>
-        <Link href="/about" className="mx-2">
-          About
-        </Link>
-        <Link href="/projects" className="mx-2">
+        <Link href="/projects" className="mx-2.5">
           Projects
         </Link>
-        <button>
+        <Link href="/categories/all" className="mx-2.5">
+          Blogs
+        </Link>
+        <Link href="/about" className="mx-2.5">
+          About
+        </Link>
+        <button className="ml-2">
           <SunIcon />
         </button>
       </nav>
 
       <div>
-        <a href="https://example.com" className="inline-block w-6 h-6 mr-4">
+        <a href={siteMetadata.linkedin} className="inline-block w-6 h-6 mr-4">
           <LinkedInIcon className="hover:scale-125 transition-all ease-linear duration-200" />
         </a>
         <a href="https://example.com" className="inline-block w-6 h-6 mr-4">

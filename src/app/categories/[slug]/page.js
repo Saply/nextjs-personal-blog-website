@@ -25,6 +25,19 @@ export async function generateStaticParams() {
   return paths;
 }
 
+export async function generateMetadata({ params }) {
+  const titles = params.slug.replaceAll("-", " ").split(" ");
+  for (let i = 0; i < titles.length; i++) {
+    titles[i] = titles[i][0].toUpperCase() + titles[i].substr(1);
+  }
+  let modifiedTitles = titles.join(" ");
+  
+  return {
+    title: `${modifiedTitles} Blogs`,
+    description: `Check out more blogs about ${params.slug === "all" ? "random stuff" : params.slug}`,
+  };
+}
+
 const CategoryPage = ({ params }) => {
   const allCategories = ["all"];
   const blogs = allBlogs.filter((blog) => {

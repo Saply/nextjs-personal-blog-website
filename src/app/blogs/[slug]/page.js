@@ -1,12 +1,62 @@
 import BlogDetails from "@/src/components/Blog/BlogDetails";
 import RenderMdx from "@/src/components/Blog/RenderMdx";
 import Tag from "@/src/components/Elements/Tag";
+import siteMetadata, { description } from "@/src/utils/siteMetadata";
 import { allBlogs } from "contentlayer/generated";
 import { slug } from "github-slugger";
 import Image from "next/image";
 
 export async function generateStaticParams() {
-  return allBlogs.map((blog) => ({slug: blog._raw.flattenedPath}));
+  return allBlogs.map((blog) => ({ slug: blog._raw.flattenedPath }));
+}
+
+export async function generateMetadata({ params }) {
+  const blog = allBlogs.find((blog) => blog._raw.flattenedPath === params.slug);
+  if (!blog) {
+    return;
+  }
+
+  const publishedAt = new Date(blog.publishedAt).toISOString();
+  const updatedAt = new Date(blog.updatedAt || blog.publishedAt).toISOString();
+
+  let imageList = [siteMetadata.socialBanner];
+  // For blog image
+  if (blog.coverImage) {
+    imageList =
+      typeof blog.coverImage.filePath === "string"
+        ? [siteMetadata.siteUrl + blog.coverImage.filePath.replace("../public", "")]
+        : blog.coverImage;
+  }
+  
+  // Map to object
+  const ogImages = imageList.map((img) => {
+    return { url: img.includes("http") ? img : siteMetadata.siteUrl + img };
+  });
+  
+  const authors = blog?.author ? [blog.author] : siteMetadata.author;
+
+  return {
+    title: blog.title,
+    description: blog.description,
+    openGraph: {
+      title: blog.title,
+      description: blog.description,
+      url: siteMetadata.siteUrl + blog.url,
+      siteName: siteMetadata.title,
+      locale: "en_US",
+      type: "article",
+      publishedTime: publishedAt,
+      modifiedTime: updatedAt,
+      images: ogImages,
+      authors: authors.length > 0 ? authors : [siteMetadata.author],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.description,
+      images: ogImages,
+    },
+  };
 }
 
 export default function BlogPage({ params }) {
