@@ -4,6 +4,7 @@ import { Inter, Manrope } from "next/font/google";
 import Header from "@/src/components/Header";
 import Footer from "../components/Footer";
 import siteMetadata from "../utils/siteMetadata";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,7 +21,7 @@ export const metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
   title: {
     template: `%s | ${siteMetadata.title}`,
-    default: siteMetadata.title
+    default: siteMetadata.title,
   },
   description: siteMetadata.description,
   openGraph: {
@@ -28,11 +29,9 @@ export const metadata = {
     description: siteMetadata.description,
     url: siteMetadata.siteUrl,
     siteName: siteMetadata.title,
-    images: [
-      siteMetadata.socialBanner
-    ],
-    locale: 'en_US',
-    type: 'website',
+    images: [siteMetadata.socialBanner],
+    locale: "en_US",
+    type: "website",
   },
   robots: {
     index: true,
@@ -41,13 +40,13 @@ export const metadata = {
       index: true,
       follow: false,
       noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    }
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: siteMetadata.title,
     images: [siteMetadata.socialBanner], // Must be an absolute URL
   },
@@ -60,9 +59,18 @@ export default function RootLayout({ children }) {
         className={cx(
           inter.variable,
           manrope.variable,
-          "font-mr bg-light"
+          "font-mr bg-light dark:bg-dark"
         )}
       >
+        <Script id="dark-mode-script">
+          {`
+            document.documentElement.classList.toggle(
+            'dark',
+            localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          )
+            `}
+        </Script>
+
         <Header />
         {children}
         <Footer />

@@ -11,7 +11,7 @@ const RecentPosts = ({ blogs }) => {
   return (
     <section className="w-full mt-32 px-32 flex flex-col items-center justify-center">
       <div className="flex w-full justify-between">
-        <h2 className="inline-block font-bold capitalize text-4xl">
+        <h2 className="inline-block font-bold capitalize text-4xl underline underline-offset-8">
           Recent Posts
         </h2>
         <Link
