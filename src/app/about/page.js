@@ -20,6 +20,7 @@ export default function About() {
                 width={192}
                 height={192}
                 className="h-48 w-48 rounded-full"
+                sizes="(max-width: 768px) 100vw, (max-width: 1180px) 50vw, 50vw"
               />
             )}
             <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight dark:text-light">
@@ -40,7 +41,7 @@ export default function About() {
               </a>
               <a
                 href="https://example.com"
-                className="inline-block w-6 h-6 mr-4"
+                className="inline-block w-6 h-6 mr-4 dark:fill-light"
               >
                 <GithubIcon className="hover:scale-125 transition-all ease duration-200" />
               </a>

@@ -8,7 +8,7 @@ const BlogLayoutTwo = ({ blog }) => {
     <div className="group grid grid-cols-12 gap-4 items-center text-dark dark:text-light">
       <Link
         href={blog.url}
-        className="col-span-12 lg:col-span-4 h-full rounded-xl overflow-hidden"
+        className="col-span-12 lg:col-span-4 h-full rounded-xl overflow-hidden "
       >
         <Image
           src={blog.coverImage.filePath.replace("../public", "")}
@@ -28,7 +28,7 @@ const BlogLayoutTwo = ({ blog }) => {
         </span>
         <Link href={blog.url} className="inline-block my-1">
           <h2 className="font-semibold capitalize text-base sm:text-lg">
-            <span className="bg-gradient-to-r from-accent/50 dark:from-accentDark/75 to-accent/50 dark:to-accentDark/75 bg-[length:0px_6px]
+            <span className="bg-gradient-to-r from-accent/50 dark:from-accentDark/50 to-accent/50 dark:to-accentDark/50 bg-[length:0px_6px]
                 group-hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500">
               {blog.title}
             </span>

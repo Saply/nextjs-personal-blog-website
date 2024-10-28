@@ -6,21 +6,10 @@ html {
     scroll-behavior: smooth;
 }
 
-/* h1>a>.icon.icon-link::before,
-h2>a>.icon.icon-link::before,
-h3>a>.icon.icon-link::before {
-    font-size: 0.5rem;
-} */
-
-/* h2>a>span>.content-header-link::before {
-    size: 1rem !important;
-    width: 100%;
-} */
-
 .content-header-link {
     opacity: 0;
     margin-left: -24px;
-    padding-right: 4px;
+    padding-right: 1px;
     display: inline-block;
     width: 1.5rem;
     height: 1.5rem;
@@ -45,29 +34,29 @@ code[data-line-numbers] {
     counter-reset: line;
   }
   
-  code[data-line-numbers] > [data-line]::before {
-    counter-increment: line;
-    content: counter(line);
-  
-    /* Other styling */
-    display: inline-block;
-    width: 0.75rem;
-    margin-right: 2rem;
-    text-align: right;
-    color: gray;
-  }
-  
-  code[data-line-numbers-max-digits="2"] > [data-line]::before {
-    width: 1.25rem;
-  }
-  
-  code[data-line-numbers-max-digits="3"] > [data-line]::before {
-    width: 1.75rem;
-  }
-  
-  code[data-line-numbers-max-digits="4"] > [data-line]::before {
-    width: 2.25rem;
-  }
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 0.75rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  width: 1.25rem;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  width: 1.75rem;
+}
+
+code[data-line-numbers-max-digits="4"] > [data-line]::before {
+  width: 2.25rem;
+}
 
 [data-highlighted-line] {
     background-color: rgba(255, 255, 255, 0.1) !important;

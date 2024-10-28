@@ -1,10 +1,17 @@
 "use client";
 import Link from "next/link";
-import { GithubIcon, LinkedInIcon, SunIcon, TwitterIcon } from "../Icons";
+import {
+  GithubIcon,
+  LinkedInIcon,
+  MoonIcon,
+  SunIcon,
+  TwitterIcon,
+} from "../Icons";
 import Logo from "./Logo";
-import siteMetadata from "@/project files/siteMetaData";
+import siteMetadata from "@/src/utils/siteMetadata";
 import { useThemeSwitch } from "../Hooks/useThemeSwitch";
 import { useState } from "react";
+import { cx } from "@/src/utils";
 
 // Add to layout.js to use same header across all routes/pages
 const Header = () => {
@@ -53,16 +60,14 @@ const Header = () => {
         </div>
       </button>
 
-      
-      <nav className="w-max py-3 px-6 sm:px-8 border-2 border-solid border-accent dark:border-accentDark rounded-full font-medium capitalize items-center flex sm:hidden fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50 transition-all ease duration-300"
-      style={{
-        top: click
-        ? "1rem"
-        : "-5rem",
-      }}
+      <nav
+        className="w-max py-3 px-6 sm:px-8 border-2 border-solid border-accent dark:border-accentDark rounded-full font-medium capitalize items-center flex sm:hidden fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50 transition-all ease duration-300"
+        style={{
+          top: click ? "1rem" : "-5rem",
+        }}
       >
-        <Link href="/projects" className="mr-2">
-          Projects
+        <Link href="/" className="mr-2">
+          Home
         </Link>
         <Link href="/categories/all" className="mx-2.5">
           Blogs
@@ -71,28 +76,51 @@ const Header = () => {
           About
         </Link>
         <button
-          className="ml-2"
+          className={cx(
+            "w-6 h-6 ease ml-2 flex items-center justify-center rounded-full p-1",
+            mode === "light" ? "bg-dark text-light" : "bg-light text-dark"
+          )}
           onClick={() => setMode(mode === "light" ? "dark" : "light")}
         >
-          <SunIcon />
+          {mode === "light" ? (
+            <MoonIcon className={"fill-dark"} />
+          ) : (
+            <SunIcon className={"fill-dark"} />
+          )}
         </button>
       </nav>
 
       <nav className="w-max py-3 px-8 border-2 border-solid border-accent dark:border-accentDark rounded-full font-medium capitalize items-center hidden sm:flex fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50">
-        <Link href="/projects" className="mr-2">
-          Projects
+        <Link
+          href="/"
+          className="mr-2 hover:scale-110 ease-in-out duration-150"
+        >
+          Home
         </Link>
-        <Link href="/categories/all" className="mx-2.5">
+        <Link
+          href="/categories/all"
+          className="mx-2.5 hover:scale-110 ease-in-out duration-150"
+        >
           Blogs
         </Link>
-        <Link href="/about" className="mx-2.5">
+        <Link
+          href="/about"
+          className="mx-2.5 hover:scale-110 ease-in-out duration-150"
+        >
           About
         </Link>
         <button
-          className="ml-2"
+          className={cx(
+            "hover:scale-110 duration-250 w-6 h-6 ease ml-2 flex items-center justify-center rounded-full p-1",
+            mode === "light" ? "bg-dark text-light" : "bg-light text-dark"
+          )}
           onClick={() => setMode(mode === "light" ? "dark" : "light")}
         >
-          <SunIcon />
+          {mode === "light" ? (
+            <MoonIcon className={"fill-dark"} />
+          ) : (
+            <SunIcon className={"fill-dark"} />
+          )}
         </button>
       </nav>
 
