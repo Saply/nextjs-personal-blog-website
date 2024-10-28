@@ -7,6 +7,7 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import GithubSlugger from "github-slugger";
 
+// yea honestly i couldnt figure out how to conditionally change the color on this svg
 const svgData = fromHtmlIsomorphic(
   `
   <span class="content-header-link">

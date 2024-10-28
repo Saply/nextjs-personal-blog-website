@@ -14,12 +14,12 @@ const Footer = () => {
   console.log(errors);
 
   return (
-    <footer className="mt-16 rounded-2xl bg-footer dark:bg-accentDark m-10 flex flex-col items-center text-light">
-      <h3 className="mt-16 font-medium text-center text-4xl px4">
-        Subscribe for more no quality content
+    <footer className="mt-16 rounded-2xl bg-dark dark:bg-footer m-5 sm:m-10 flex flex-col items-center text-light">
+      <h3 className="mt-16 font-semibold text-center text-2xl sm:text-3xl lg:text-4xl px-4">
+        Stay updated for new articles
       </h3>
-      <p className="mt-5 px-4 text-center w-3/5 font-light text-base">
-        or follow using a RSS feed reader if you want
+      <p className="mt-5 px-4 text-center w-full sm:w-3/5 font-light text-sm sm:text-base">
+        Subscribe to the RSS feed
       </p>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -46,13 +46,13 @@ const Footer = () => {
         </a>
       </div>
 
-      <div className="w-full mt-24 relative font-medium border-t border-solid border-light py-6 px-8 flex flex-row items-center justify-between">
-        <Link href="/sitemap.xml" className="text-center underline">
+      <div className="w-full mt-16 md:mt-24 relative font-medium border-t border-solid border-light py-6 px-8 flex flex-col md:flex-row items-center justify-between">
+        <Link href="/sitemap.xml" className="text-center underline underline-offset-2 my-3 md:my-0 text-white">
           sitemap.xml
         </Link>
-        <div className="text-center">
-          Made with NextJS and TailwindCSS with Contentlayer2
-        </div>
+        <a className="text-center underline underline-offset-2 text-white" href="https://github.com/Saply/nextjs-personal-blog-website" target="_blank">
+          Website Source Code
+        </a>
       </div>
     </footer>
   );

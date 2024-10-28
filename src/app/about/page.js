@@ -1,17 +1,13 @@
 import Image from "next/image";
-import profileImg from "@/public/Mr._Fresh.webp";
+import profileImg from "@/public/banner.jpg";
 import { LinkedInIcon, TwitterIcon, GithubIcon } from "@/src/components/Icons";
 
 export default function About() {
-  let name = "Spaly";
-  let occupation = "gaming";
-  let company = "lethal";
-  
   return (
     <>
-      <div className="w-full mt-8 px-32 flex flex-col divide-y divide-black dark:divide-gray">
+      <div className="w-full mt-2 sm:mt-6 md:mt-10 px-5 sm:px-10 md:px-24 sxl:px-32 flex flex-col divide-y divide-black dark:divide-gray">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 class="w-full text-5xl font-bold leading-9 dark:text-light  underline-offset-8">
+          <h1 class="w-full text-2xl md:text-4xl font-bold tracking-tight text-dark dark:text-light">
             About Me
           </h1>
         </div>
@@ -27,16 +23,13 @@ export default function About() {
               />
             )}
             <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight dark:text-light">
-              {name}
+              Spaly
             </h3>
-            <div className="text-gray-500 dark:text-light">{occupation}</div>
-            <div className="text-gray-500 dark:text-light">{company}</div>
+            <div className="text-gray-500 dark:text-light">broke college student</div>
+            <div className="text-gray-500 dark:text-light">woefully unemployed</div>
 
             <div className="flex space-x-3 pt-6">
-              <a
-                href="https://example.com"
-                className="inline-block w-6 h-6 mr-4"
-              >
+              <a href="https://example.com" className="inline-block w-6 h-6">
                 <LinkedInIcon className="hover:scale-125 transition-all ease-linear duration-200" />
               </a>
               <a
@@ -53,8 +46,39 @@ export default function About() {
               </a>
             </div>
           </div>
-          <div className="prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2 ml-2.5 mr-2.5">
-            Lorem ipsum qweiornweiont
+          <div className="prose max-w-none pb-4 pt-8 dark:prose-invert xl:col-span-2 text-justify text-dark dark:text-white">
+            <p>
+              Lorem ipsum odor amet, consectetuer adipiscing elit. Semper curae
+              bibendum sit velit ut iaculis facilisi elit. Mi penatibus inceptos
+              fringilla egestas varius morbi nunc vel. Maximus blandit dapibus
+              magnis; placerat inceptos in. Sodales mi aliquet urna; auctor
+              sollicitudin tortor. Erat semper non elit consectetur nisl
+              ridiculus sagittis. Posuere a arcu magnis vel ridiculus ex conubia
+              vel mattis.
+            </p>
+
+            <p>
+              Vel curae porta maximus, semper hendrerit tempor. Mollis quam est
+              tristique viverra bibendum. Commodo hendrerit donec aliquam
+              curabitur porttitor. Leo fames odio porttitor at mauris habitasse
+              taciti inceptos. Lorem amet quam pharetra curabitur ac aliquet! Id
+              eleifend risus ultrices nulla mi semper. Eleifend vestibulum nec
+              elit quam lobortis. Dictumst vestibulum imperdiet consequat tempus
+              phasellus sem. Lacinia interdum maecenas tortor maecenas nisi;
+              pharetra potenti.
+            </p>
+
+            <p>
+              Lobortis consectetur dolor rutrum luctus montes. Semper interdum
+              magna ad vestibulum natoque commodo lacinia risus consectetur.
+              Quis tempus parturient vivamus; netus ridiculus id. Scelerisque
+              nulla sodales ad eget nostra purus ullamcorper quam velit. Quis
+              nostra dictumst maecenas tempor feugiat lacinia suspendisse proin.
+              Purus bibendum per nulla molestie ipsum mattis in eleifend.
+              Nascetur torquent adipiscing orci taciti diam aliquam? Mattis
+              habitasse vitae, blandit morbi scelerisque nulla ac primis.
+              Posuere eu cubilia tempus adipiscing suspendisse purus.
+            </p>
           </div>
         </div>
       </div>

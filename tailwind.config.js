@@ -9,17 +9,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dark: "#0d1320",
+        dark: "#0f0f0f",
         light: "#fff",
         accent: "#7B00D3", 
-        accentDark: "#ffdb4d",
+        accentDark: "#ec3d60",
         gray: "#747474",
-        footer: "#1b1b1b"
+        footer: "#272727"
       },
       // use class names for fonts
       fontFamily: {
         mr: ["var(--font-mr)"],
         in: ["var(--font-in)"]
+      },
+      screens: {
+        sxl: "1180px", // @media (min-width: 1180px)
+        xs: "480px"
       }
     },
   },

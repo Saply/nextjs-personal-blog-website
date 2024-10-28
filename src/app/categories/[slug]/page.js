@@ -31,26 +31,34 @@ export async function generateMetadata({ params }) {
     titles[i] = titles[i][0].toUpperCase() + titles[i].substr(1);
   }
   let modifiedTitles = titles.join(" ");
-  
+
   return {
     title: `${modifiedTitles} Blogs`,
-    description: `Check out more blogs about ${params.slug === "all" ? "random stuff" : params.slug}`,
+    description: `Check out more blogs about ${
+      params.slug === "all" ? "random stuff" : params.slug
+    }`,
   };
 }
 
 const CategoryPage = ({ params }) => {
-  const allCategories = ["all"];
-  const blogs = allBlogs.filter((blog) => {
-    return blog.tags.some((tag) => {
+  // Separating logic to create list of categories from all blogs
+  const allCategories = ["all"]; // Initialize with 'all' category
+  allBlogs.forEach((blog) => {
+    blog.tags.forEach((tag) => {
       const slugified = slug(tag);
       if (!allCategories.includes(slugified)) {
         allCategories.push(slugified);
       }
-      if (params.slug === "all") {
-        return true;
-      }
-      return slugified === params.slug;
     });
+  });
+  // Sort allCategories to ensure they are in alphabetical order
+  allCategories.sort();
+  // Step 2: Filter blogs based on the current category (params.slug)
+  const blogs = allBlogs.filter((blog) => {
+    if (params.slug === "all") {
+      return true; // Include all blogs if 'all' category is selected
+    }
+    return blog.tags.some((tag) => slug(tag) === params.slug);
   });
 
   return (
@@ -59,7 +67,11 @@ const CategoryPage = ({ params }) => {
         <h1 className="mt-6 font-semibold text-5xl">#{params.slug}</h1>
         <span className="mt-2 inline-block">Check out my other posts</span>
       </div>
-      <Categories categories={allCategories} currentSlug={params.slug} className="w-full divide-y divide-gray"/>
+      <Categories
+        categories={allCategories}
+        currentSlug={params.slug}
+        className="w-full divide-y divide-gray"
+      />
 
       <div className="grid grid-cols-3 grid-rows-2 gap-16 mt-24 px-32">
         {blogs.map((blog, index) => (

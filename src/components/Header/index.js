@@ -19,7 +19,7 @@ const Header = () => {
     <header className="w-full p-4 px-5 sm:px-10 flex items-center justify-between">
       <Logo />
       <button className="inline-block sm:hidden z-50" onClick={toggle}>
-        <div className="w-6 cursor-pointer transition-all ease duration-300">
+        <div className="w-6 cursor-pointer transition-all ease duration-300 mr-8">
           <div className="relative">
             <span
               className="absolute top-0 inline-block w-full h-0.5 bg-dark dark:bg-light rounded transition-all ease duration-200"
@@ -54,17 +54,14 @@ const Header = () => {
       </button>
 
       
-      <nav className="w-max py-3 px-6 sm:px-8 border border-solid border-dark rounded-full font-medium capitalize items-center flex sm:hidden fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50 transition-all ease duration-300"
+      <nav className="w-max py-3 px-6 sm:px-8 border-2 border-solid border-accent dark:border-accentDark rounded-full font-medium capitalize items-center flex sm:hidden fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50 transition-all ease duration-300"
       style={{
         top: click
         ? "1rem"
         : "-5rem",
       }}
       >
-        <Link href="/" className="mr-2">
-          Home
-        </Link>
-        <Link href="/projects" className="mx-2.5">
+        <Link href="/projects" className="mr-2">
           Projects
         </Link>
         <Link href="/categories/all" className="mx-2.5">
@@ -81,11 +78,8 @@ const Header = () => {
         </button>
       </nav>
 
-      <nav className="w-max py-3 px-8 border border-solid border-dark rounded-full font-medium capitalize items-center hidden sm:flex fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50">
-        <Link href="/" className="mr-2">
-          Home
-        </Link>
-        <Link href="/projects" className="mx-2.5">
+      <nav className="w-max py-3 px-8 border-2 border-solid border-accent dark:border-accentDark rounded-full font-medium capitalize items-center hidden sm:flex fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50">
+        <Link href="/projects" className="mr-2">
           Projects
         </Link>
         <Link href="/categories/all" className="mx-2.5">
