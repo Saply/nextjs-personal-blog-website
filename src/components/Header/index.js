@@ -128,7 +128,7 @@ const Header = () => {
         <a href={siteMetadata.linkedin} className="inline-block w-6 h-6 mr-4">
           <LinkedInIcon className="hover:scale-125 transition-all ease-linear duration-200" />
         </a>
-        <a href="https://example.com" className="inline-block w-6 h-6 mr-4">
+        <a href={siteMetadata.twitter} className="inline-block w-6 h-6 mr-4">
           <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
         <a
