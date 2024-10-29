@@ -1,7 +1,7 @@
 import { allBlogs } from "@/.contentlayer/generated";
 import { sortBlogs } from "@/src/utils";
 import siteMetadata from "@/src/utils/siteMetadata";
-
+//     <media:thumbnail width="240" height="135" url="${siteMetadata.siteUrl}${blog.coverImage.filePath.replace("../public", "")}"/>
 const generateRssItem = (blog) => `
   <item>
     <guid>${siteMetadata.siteUrl}/blogs/${blog._raw.flattenedPath}</guid>
@@ -9,7 +9,8 @@ const generateRssItem = (blog) => `
     <link>${siteMetadata.siteUrl}/blogs/${blog._raw.flattenedPath}</link>
     ${blog.description && `<description>${blog.description}</description>`}
     <pubDate>${new Date(blog.publishedAt).toUTCString()}</pubDate>
-    <media:thumbnail width="240" height="135" url="${siteMetadata.siteUrl}${blog.coverImage.filePath.replace("../public", "")}"/>
+
+    <media:content height="648" medium="image" type="image/jpeg" url="${siteMetadata.siteUrl}${blog.coverImage.filePath.replace("../public", "")}" width="1152"></media:content>
     <author>${siteMetadata.email} (${siteMetadata.author})</author>
     ${blog.tags && blog.tags.map((t) => `<category>${t}</category>`).join("")}
 
