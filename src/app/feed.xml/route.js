@@ -10,7 +10,7 @@ const generateRssItem = (blog) => `
     ${blog.description && `<description>${blog.description}</description>`}
     <pubDate>${new Date(blog.publishedAt).toUTCString()}</pubDate>
 
-    <media:content height="648" medium="image" type="image/jpeg" url="${siteMetadata.siteUrl}${blog.coverImage.filePath.replace("../public", "")}" width="1152"></media:content>
+    <media:content height="${blog.coverImage.height}" medium="image" type="image/jpeg" url="${siteMetadata.siteUrl}${blog.coverImage.filePath.replace("../public", "")}" width="${blog.coverImage.width}"></media:content>
     <author>${siteMetadata.email} (${siteMetadata.author})</author>
     ${blog.tags && blog.tags.map((t) => `<category>${t}</category>`).join("")}
 
