@@ -10,9 +10,9 @@ const Footer = () => {
       <h3 className="mt-16 font-semibold text-center text-2xl sm:text-3xl lg:text-4xl px-4">
         Get notified for new blogs
       </h3>
-      <p className="mt-5 px-4 text-center w-full sm:w-3/5 font-light text-sm sm:text-base">
+      <Link className="mt-5 px-4 text-center w-full sm:w-3/5 font-light text-sm sm:text-base underline underline-offset-8 decoration-accent dark:decoration-accentDark" href="/feed.xml">
         Subscribe to the RSS feed
-      </p>
+      </Link>
 
       <div className="flex items-center mt-8">
         <a href={siteMetadata.linkedin} className="inline-block w-6 h-6 mr-4">

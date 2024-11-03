@@ -5,7 +5,7 @@ const {withContentlayer} = require("next-contentlayer2")
 
 const nextConfig = {
     compiler: {
-        removeConsole: false
+        removeConsole: true
     }
 }
 
