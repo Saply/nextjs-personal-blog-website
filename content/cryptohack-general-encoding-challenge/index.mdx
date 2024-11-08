@@ -29,7 +29,7 @@ This question involves continuously solving 100 encoding challenges, the challen
 ### 13377.py
 As mentioned in the question, this is the source code for the challenge which runs on the server. There are 5 encoding algorithms as highlighted below:
 
-```py showLineNumbers {30-39} caption="https://cryptohack.org/static/challenges/13377_86793614535c47dea371d2f0e406dbd9.py"
+```py showLineNumbers {30-39}
 from Crypto.Util.number import bytes_to_long, long_to_bytes
 from utils import listener # this is cryptohack's server-side module and not part of python
 import base64
@@ -104,7 +104,7 @@ listener.start_server(port=13377)
 
 ### pwntools_example.py
 This is a helper file for sending data to the server hosting the source code, it uses the pwntools library to send/receive data. We can modify this code to run in a loop.
-```py caption="https://cryptohack.org/static/challenges/pwntools_example_f93ca6ccef2def755aa8f6d9aa6e9c5b.py"
+```py
 from pwn import * # pip install pwntools
 import json
 
@@ -204,7 +204,7 @@ for i in range(101):
 
 The process repeats until the flag is obtained.
 
-<Image
+<ZoomableImage
     src="/blog-images/cryptohack/encoding-challenge-flag.png"
     width="554"
     height="259"

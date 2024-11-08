@@ -3,11 +3,13 @@ import React from "react";
 import { useMDXComponent } from "next-contentlayer2/hooks";
 import Image from "next/image";
 import Pre from "pliny/ui/Pre";
+import ZoomableImage from "../Elements/ZoomableImage";
 
 // import in mdxComponents if want to use any React components inside the blog
 const mdxComponents = {
   Image,
   pre: Pre,
+  ZoomableImage
 };
 
 const RenderMdx = ({ blog }) => {

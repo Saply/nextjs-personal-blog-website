@@ -1,5 +1,4 @@
 "use client";
-import { useForm } from "react-hook-form";
 import { GithubIcon, LinkedInIcon, TwitterIcon } from "../Icons";
 import Link from "next/link";
 import siteMetadata from "@/src/utils/siteMetadata";
