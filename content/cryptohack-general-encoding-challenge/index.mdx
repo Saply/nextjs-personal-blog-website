@@ -1,0 +1,213 @@
+---
+title: "CryptoHack: Encoding Challenge"
+description: "My writeup for the Encoding Challenge on CryptoHack "
+coverImage: "../../public/blog-images/cryptohack/cover.jpg"
+publishedAt: "2024-11-8"
+updatedAt: "2024-11-8"
+author: "Saply"
+isPublished: true
+tags: 
+- ctf
+---
+
+## Introduction
+Today i'll be solving the [Encoding - Encoding Challenge](https://cryptohack.org/challenges/general/) on CryptoHack.
+
+> Now you've got the hang of the various encodings you'll be encountering, let's have a look at automating it.
+>
+> Can you pass all 100 levels to get the flag?
+>
+> The 13377.py file attached below is the source code for what's running on the server. The pwntools_example.py file provides the start of a solution.
+>
+> For more information about connecting to interactive challenges, see the FAQ. Feel free to skip ahead to the cryptography if you aren't in the mood for a coding challenge!
+>
+> If you want to run and test the challenge locally, then check the FAQ to download the utils.listener module.
+> Connect at `socket.cryptohack.org 13377`
+
+## Details
+This question involves continuously solving 100 encoding challenges, the challenge also provides two files used to assist us: 
+### 13377.py
+As mentioned in the question, this is the source code for the challenge which runs on the server. There are 5 encoding algorithms as highlighted below:
+
+```py showLineNumbers {30-39} caption="https://cryptohack.org/static/challenges/13377_86793614535c47dea371d2f0e406dbd9.py"
+from Crypto.Util.number import bytes_to_long, long_to_bytes
+from utils import listener # this is cryptohack's server-side module and not part of python
+import base64
+import codecs
+import random
+
+FLAG = "crypto{????????????????????}"
+ENCODINGS = [
+    "base64",
+    "hex",
+    "rot13",
+    "bigint",
+    "utf-8",
+]
+with open('/usr/share/dict/words') as f:
+    WORDS = [line.strip().replace("'", "") for line in f.readlines()]
+
+
+class Challenge():
+    def __init__(self):
+        self.no_prompt = True # Immediately send data from the server without waiting for user input
+        self.challenge_words = ""
+        self.stage = 0
+
+    def create_level(self):
+        self.stage += 1
+        self.challenge_words = "_".join(random.choices(WORDS, k=3))
+        encoding = random.choice(ENCODINGS)
+
+        if encoding == "base64":
+            encoded = base64.b64encode(self.challenge_words.encode()).decode() # wow so encode
+        elif encoding == "hex":
+            encoded = self.challenge_words.encode().hex()
+        elif encoding == "rot13":
+            encoded = codecs.encode(self.challenge_words, 'rot_13')
+        elif encoding == "bigint":
+            encoded = hex(bytes_to_long(self.challenge_words.encode()))
+        elif encoding == "utf-8":
+            encoded = [ord(b) for b in self.challenge_words]
+
+        return {"type": encoding, "encoded": encoded}
+
+    #
+    # This challenge function is called on your input, which must be JSON
+    # encoded
+    #
+    def challenge(self, your_input):
+        if self.stage == 0:
+            return self.create_level()
+        elif self.stage == 100:
+            self.exit = True
+            return {"flag": FLAG}
+
+        if self.challenge_words == your_input["decoded"]:
+            return self.create_level()
+
+        return {"error": "Decoding fail"}
+
+
+import builtins; builtins.Challenge = Challenge # hack to enable challenge to be run locally, see https://cryptohack.org/faq/#listener
+listener.start_server(port=13377)
+```
+
+- **base64** is just regular base64, for example `Y29uc3VsdGF0aW9uX2lzbGFuZF9yZXNwb25k` which when decoded becomes `consultation_island_respond`.
+- **hex** refers to a hexadecimal value *without* the 0x prepended to it, for example `64695f6269645f6c79636f73` which when decoded becomes `di_bid_lycos`.
+- **rot13** is a substitution cipher algorithm which replaces a letter with the 13th letter after it, for example `yf_nhgb_vaqvr` which when decoded becomes `ls_auto_indie` 
+- **bigint** refers to a hexadecimal value *with* the "0x" prepended to it, one such example is `0x6d65646c696e655f6d696e65735f636f6e74656e7473` which when decoded becomes `medline_mines_contents`.
+- **utf-8** refers to the ASCII representation of a letter. It's sent as an array of integers such as `[114, 101, 115, 111, 108, 117, 116, 105, 111, 110, 95, 115, 109, 97, 108, 108, 101, 114, 95, 101, 108, 101, 99, 116, 114, 105, 99, 105, 116, 121]`, which when decoded becomes `resolution_smaller_electricity`
+
+
+
+
+### pwntools_example.py
+This is a helper file for sending data to the server hosting the source code, it uses the pwntools library to send/receive data. We can modify this code to run in a loop.
+```py caption="https://cryptohack.org/static/challenges/pwntools_example_f93ca6ccef2def755aa8f6d9aa6e9c5b.py"
+from pwn import * # pip install pwntools
+import json
+
+r = remote('socket.cryptohack.org', 13377, level = 'debug')
+
+def json_recv():
+    line = r.recvline()
+    return json.loads(line.decode())
+
+def json_send(hsh):
+    request = json.dumps(hsh).encode()
+    r.sendline(request)
+
+
+received = json_recv()
+
+print("Received type: ")
+print(received["type"])
+print("Received encoded value: ")
+print(received["encoded"])
+
+to_send = {
+    "decoded": "changeme"
+}
+json_send(to_send)
+
+json_recv()"
+```
+
+## Final Code
+This is my Python implementation for solving the question. The code first receives a JSON containing the type and encoded value from the server, then conditionally checks for what type of data is received using `received["type"]` and uses the respective decoding methods to transform them into a human readable format. Then, the decoded message gets sent to the server.
+```python
+from pwn import *
+import json
+import codecs
+import base64
+
+r = remote('socket.cryptohack.org', 13377, level = 'debug')
+
+def json_recv():
+    line = r.recvline()
+    return json.loads(line.decode())
+
+def json_send(hsh):
+    request = json.dumps(hsh).encode()
+    r.sendline(request)
+
+for i in range(101):
+    to_send = {
+        "decoded": ""
+    }
+    received = json_recv()
+    print("Received type: ")
+    print(received["type"])
+    print("Received encoded value: ")
+    print(received["encoded"])
+    
+    # b'{"type": "rot13", "encoded": "synfu_ys_vaabingvbaf"}\n'
+    if (received["type"] == "rot13"):
+        s = codecs.decode(received["encoded"], "rot_13")
+        to_send["decoded"] = s
+        print(f"Decoded: {s}")
+    
+    # For hex with "0x"
+    # b'{"type": "bigint", "encoded": "0x7669736974696e675f70726f6669745f73656c6c696e67"}\n'
+    elif (received["type"] == "bigint"):
+        # Remove first 2 letters "0x..."
+        hexvaluewithout0x = received["encoded"][2:]
+        s = bytes.fromhex(hexvaluewithout0x).decode("utf-8")
+        to_send["decoded"] = s
+        print(f"Decoded: {s}")
+    
+    # For hex without "0x"
+    elif (received["type"] == "hex"):
+        s = bytes.fromhex(received["encoded"]).decode("utf-8")
+        to_send["decoded"] = s
+        print(f"Decoded: {s}")
+    
+    # actually ASCII
+    elif (received["type"] == "utf-8"):
+        arr = received["encoded"]
+        s = ""
+        for i in range(len(arr)):
+            s += (chr(arr[i]))
+            
+        to_send["decoded"] = s
+        print(f"Decoded: {s}")
+    
+    # b'{"type": "base64", "encoded": "dXBzZXRfbWFjcm9fYXBuaWM="}\n'
+    elif (received["type"] == "base64"):
+        s = base64.b64decode(received["encoded"]).decode("utf-8")
+        to_send["decoded"] = s
+        print(f"Decoded: {s}")
+    
+    json_send(to_send)
+```
+
+The process repeats until the flag is obtained.
+
+<Image
+    src="/blog-images/cryptohack/encoding-challenge-flag.png"
+    width="554"
+    height="259"
+    alt="Flag Image"
+    sizes="100vw"
+/>
