@@ -14,13 +14,7 @@ const Footer = () => {
       </Link>
 
       <div className="flex items-center mt-8">
-        <a href={siteMetadata.linkedin} className="inline-block w-6 h-6 mr-4">
-          <LinkedInIcon className="hover:scale-125 transition-all ease-linear duration-200" />
-        </a>
-        <a href="https://example.com" className="inline-block w-6 h-6 mr-4">
-          <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
-        </a>
-        <a href="https://example.com" className="inline-block w-6 h-6 mr-4 fill-light">
+        <a href={siteMetadata.github} className="inline-block w-6 h-6 mr-4 fill-light">
           <GithubIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
       </div>

@@ -9,9 +9,7 @@ const siteMetadata = {
   siteLogo: "/Mr._Fresh.webp",
   socialBanner: "/banner.jpg", // add social banner in the public folder
   email: "realsaplyx@gmail.com",
-  github: "https://example.com",
-  twitter: "https://example.com",
-  linkedin: "https://example.com/",
+  github: "https://github.com/Saply",
   locale: "en-US",
 };
 

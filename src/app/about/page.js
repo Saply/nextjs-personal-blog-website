@@ -1,6 +1,7 @@
 import Image from "next/image";
 import profileImg from "@/public/banner.jpg";
 import { LinkedInIcon, TwitterIcon, GithubIcon } from "@/src/components/Icons";
+import siteMetadata from "@/src/utils/siteMetadata";
 
 export default function About() {
   return (
@@ -26,21 +27,11 @@ export default function About() {
             <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight dark:text-light">
               Spaly
             </h3>
-            <div className="text-gray-500 dark:text-light">broke college student</div>
-            <div className="text-gray-500 dark:text-light">woefully unemployed</div>
+            <div className="text-gray-500 dark:text-light">Student at MMU Cyberjaya</div>
 
             <div className="flex space-x-3 pt-6">
-              <a href="https://example.com" className="inline-block w-6 h-6">
-                <LinkedInIcon className="hover:scale-125 transition-all ease-linear duration-200" />
-              </a>
               <a
-                href="https://example.com"
-                className="inline-block w-6 h-6 mr-4"
-              >
-                <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
-              </a>
-              <a
-                href="https://example.com"
+                href={siteMetadata.github}
                 className="inline-block w-6 h-6 mr-4 dark:fill-light"
               >
                 <GithubIcon className="hover:scale-125 transition-all ease duration-200" />
@@ -49,36 +40,13 @@ export default function About() {
           </div>
           <div className="prose max-w-none pb-4 pt-8 dark:prose-invert xl:col-span-2 text-justify text-dark dark:text-white">
             <p>
-              Lorem ipsum odor amet, consectetuer adipiscing elit. Semper curae
-              bibendum sit velit ut iaculis facilisi elit. Mi penatibus inceptos
-              fringilla egestas varius morbi nunc vel. Maximus blandit dapibus
-              magnis; placerat inceptos in. Sodales mi aliquet urna; auctor
-              sollicitudin tortor. Erat semper non elit consectetur nisl
-              ridiculus sagittis. Posuere a arcu magnis vel ridiculus ex conubia
-              vel mattis.
+              i like aquariums
             </p>
-
             <p>
-              Vel curae porta maximus, semper hendrerit tempor. Mollis quam est
-              tristique viverra bibendum. Commodo hendrerit donec aliquam
-              curabitur porttitor. Leo fames odio porttitor at mauris habitasse
-              taciti inceptos. Lorem amet quam pharetra curabitur ac aliquet! Id
-              eleifend risus ultrices nulla mi semper. Eleifend vestibulum nec
-              elit quam lobortis. Dictumst vestibulum imperdiet consequat tempus
-              phasellus sem. Lacinia interdum maecenas tortor maecenas nisi;
-              pharetra potenti.
+              i write things here on occassion (never)
             </p>
-
             <p>
-              Lobortis consectetur dolor rutrum luctus montes. Semper interdum
-              magna ad vestibulum natoque commodo lacinia risus consectetur.
-              Quis tempus parturient vivamus; netus ridiculus id. Scelerisque
-              nulla sodales ad eget nostra purus ullamcorper quam velit. Quis
-              nostra dictumst maecenas tempor feugiat lacinia suspendisse proin.
-              Purus bibendum per nulla molestie ipsum mattis in eleifend.
-              Nascetur torquent adipiscing orci taciti diam aliquam? Mattis
-              habitasse vitae, blandit morbi scelerisque nulla ac primis.
-              Posuere eu cubilia tempus adipiscing suspendisse purus.
+              tbh i have no idea what else to put here
             </p>
           </div>
         </div>

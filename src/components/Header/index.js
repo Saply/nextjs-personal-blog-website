@@ -125,14 +125,8 @@ const Header = () => {
       </nav>
 
       <div className="hidden sm:flex items-center">
-        <a href={siteMetadata.linkedin} className="inline-block w-6 h-6 mr-4">
-          <LinkedInIcon className="hover:scale-125 transition-all ease-linear duration-200" />
-        </a>
-        <a href={siteMetadata.twitter} className="inline-block w-6 h-6 mr-4">
-          <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
-        </a>
         <a
-          href="https://example.com"
+          href={siteMetadata.github}
           className="inline-block w-6 h-6 mr-4 dark:fill-light"
         >
           <GithubIcon className="hover:scale-125 transition-all ease duration-200" />
